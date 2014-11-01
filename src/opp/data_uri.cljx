@@ -37,12 +37,7 @@
   "Translate the data-uri data from one encoding to another."
   (fn [data from to] [from to]))
 
-;; decode
-(defmethod transcode-data [:raw    :raw]    [data _ _] data)
 (defmethod transcode-data [:base64 :raw]    [data _ _] (b64/decode-string data))
-
-;; encode
-(defmethod transcode-data [:base64 :base64] [data _ _] data)
 (defmethod transcode-data [:raw    :base64] [data _ _] (b64/encode-string data))
 
 
